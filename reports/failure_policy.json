@@ -1,0 +1,7 @@
+{
+  "failed_step": 7,
+  "total_steps": 10,
+  "policy": "rollback",
+  "rationale": "The rollback recovery policy was selected because step 7 executes an untrusted test harness mutation that can leave contaminated filesystem artifacts, partial file writes, and mutated dependencies. Reverting to the clean snapshot checkpoint captured at step 6 guarantees byte-level restoration of the microVM guest filesystem without requiring full re-provisioning from scratch (as with 'fresh'), while avoiding the risk of executing subsequent operations on a tainted state (as with 'resume'). This satisfies both deterministic isolation and minimal recovery latency.",
+  "trace_path": "reports/failure_trace.jsonl"
+}

@@ -1,0 +1,49 @@
+services:
+  ledger:
+    image: postgres:16-alpine
+    container_name: celesto_ledger
+    environment:
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: app_password
+      POSTGRES_DB: celesto_ledger
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./seeds:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U app -d celesto_ledger"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+    restart: unless-stopped
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: celesto_api
+    ports:
+      - "8080:8080"
+    depends_on:
+      ledger:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql+psycopg://app:app_password@ledger:5432/celesto_ledger
+      CELESTO_PROVIDER: local
+      CELESTO_API_KEY: replace_with_your_celesto_api_key
+      LLM_API_KEY: replace_with_your_llm_api_key
+      LLM_MODEL: replace_with_supported_model
+      API_PORT: 8080
+      ENVIRONMENT: production
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8080/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

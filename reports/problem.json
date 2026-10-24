@@ -1,0 +1,6 @@
+{
+  "who": "DevOps teams, AI platform engineers, and software developers automating code synthesis, regression verification, and dependency management in production environments.",
+  "agent_work": "Autonomous inspection, dependency installation, source code patching, regression test execution, and safe state checkpointing inside isolated Celesto microVMs.",
+  "proof_output": "Append-only command audit JSONL logs, PostgreSQL run ledger entries, rollback recovery traces, and containment verification digests.",
+  "idea_source": "idea_bank"
+}

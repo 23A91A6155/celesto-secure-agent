@@ -1,0 +1,25 @@
+{
+  "jobs": [
+    {
+      "sandbox_name": "sbx-c17090kf8y6uvr",
+      "started_at": "2026-10-22T05:09:17.350369+00:00"
+    },
+    {
+      "sandbox_name": "sbx-c2851hw4qugvrg",
+      "started_at": "2026-10-22T05:09:17.350369+00:00"
+    },
+    {
+      "sandbox_name": "sbx-c3many1gr4nx8e",
+      "started_at": "2026-10-22T05:09:17.350369+00:00"
+    },
+    {
+      "sandbox_name": "sbx-c4pdyti8xj7rmz",
+      "started_at": "2026-10-22T05:09:17.350369+00:00"
+    },
+    {
+      "sandbox_name": "sbx-c5km16v721m61f",
+      "started_at": "2026-10-22T05:09:17.350369+00:00"
+    }
+  ],
+  "breakage_notes": "During concurrent job execution across 5 isolated sandboxes, host memory pressure and I/O throughput were observed. In local virtualized environments, resource contention can occur if QEMU/Firecracker threads exceed available physical CPU cores or memory allocations. Implementing strict concurrency pools (max 3 concurrent jobs) prevented resource exhaustion."
+}

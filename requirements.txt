@@ -1,0 +1,20 @@
+# Trusted Control Plane Dependencies
+fastapi>=0.115.0
+uvicorn>=0.30.0
+pydantic>=2.8.0
+pydantic-settings>=2.4.0
+sqlalchemy>=2.0.0
+psycopg[binary]>=3.2.0
+asyncpg>=0.29.0
+httpx>=0.27.0
+requests>=2.31.0
+
+# Testing and Validation
+pytest>=8.0.0
+pytest-asyncio>=0.23.0
+
+# Celesto Agent & Sandboxing Prerequisites
+# Note: Full Celesto microVM execution requires Linux with KVM (/dev/kvm) or Celesto Cloud API credentials
+paramiko>=3.4.0
+pycdlib>=1.14.0
+# celesto>=0.1.6

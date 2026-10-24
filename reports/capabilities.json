@@ -1,0 +1,19 @@
+{
+  "capabilities": [
+    {
+      "id": "snapshots",
+      "why": "Celesto microVM snapshots enable byte-level filesystem and memory checkpoints before risky operations, allowing deterministic rollback upon test failures or unexpected exceptions.",
+      "evidence_path": "reports/failure_trace.jsonl"
+    },
+    {
+      "id": "safety_hooks",
+      "why": "Safety hooks inspect every attempted agent command before dispatch to block malicious patterns, exfiltration attempts, and destructive host operations prior to execution.",
+      "evidence_path": "reports/evidence/containment.log"
+    },
+    {
+      "id": "network_policy",
+      "why": "Enforces strict network isolation rules at the microVM boundary to prevent unauthorized egress connections and prevent exfiltration of canary tokens or internal secrets.",
+      "evidence_path": "reports/containment.json"
+    }
+  ]
+}
